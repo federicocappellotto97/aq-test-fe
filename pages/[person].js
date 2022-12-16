@@ -78,10 +78,11 @@ export default function Person({ person }) {
             </motion.div>
             <div className="flex-1">
               <motion.div
+                initial={false}
                 animate={{
                   width: 1088,
                   height: 1377,
-                  transition: { duration: 1, delay: 0.2 },
+                  transition: { duration: 1 },
                 }}
                 layoutId={`image-${person.username}`}
               >
