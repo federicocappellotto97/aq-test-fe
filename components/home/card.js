@@ -13,16 +13,15 @@ export default function Card({ person, index, isCompact }) {
 
   return (
     <motion.div
-      layout
-      className={`shrink-0 relative snap-center`}
+      className={`relative shrink-0`}
       style={{
-        zIndex: 25 - index,
+        zIndex: 10 - index,
       }}
       variants={{
         compact: {
           marginLeft: index > 0 ? "-38%" : 0,
           scale: index > 0 ? scale[index] : 1,
-          transition: { duration: 0.5, delay: 0.2 },
+          transition: { duration: 0.5 },
         },
         slider: {
           marginLeft: "0",
@@ -35,47 +34,48 @@ export default function Card({ person, index, isCompact }) {
         href={`/${person.username}`}
         className={isCompact ? "pointer-events-none" : ""}
       >
-        <motion.div layoutId={`image-${person.username}`}>
+        <motion.div
+          layoutId={`image-${person.username}`}
+          transition={{
+            layout: {
+              duration: 1,
+            },
+          }}
+        >
           <Image
             src={person.image}
-            className={`rounded-full aspect-[0.78] object-cover ${
-              isCompact ? "" : ""
-            }`}
+            className="aspect-[0.78] rounded-full object-cover"
             alt={index}
-            width={536}
-            height={681}
+            width={isCompact ? 536 : 459}
+            height={isCompact ? 681 : 583}
           />
         </motion.div>
       </Link>
-      <motion.div
-        exit={{ opacity: 0, transition: { duration: 0.5 } }}
-        variants={{
-          compact: {
-            y: 300,
+      {!isCompact && (
+        <motion.div
+          initial={{
+            y: "100%",
             opacity: 0,
-            visibility: "hidden",
-            transition: { duration: 0.5 },
-          },
-          slider: {
+          }}
+          animate={{
             y: 0,
             opacity: 1,
-            visibility: "visible",
-            transition: { duration: 0.5, delay: 0.5 },
-          },
-        }}
-        className="space-y-1 absolute top-full pt-8 inset-x-0"
-      >
-        <h3
-          className={`${playfair.className} text-[2.5rem] leading-[1.1] text-black text-center`}
+            transition: { duration: 0.5, delay: 1 },
+          }}
+          className="space-y-1 mt-8"
         >
-          {person.name}
-        </h3>
-        <p
-          className={`${playfair.className} text-[1.25rem] leading-[1.1] text-[#848484] text-center`}
-        >
-          {person.username}
-        </p>
-      </motion.div>
+          <h3
+            className={`${playfair.className} text-center text-[2.5rem] leading-[1.1] text-black`}
+          >
+            {person.name}
+          </h3>
+          <p
+            className={`${playfair.className} text-center text-[1.25rem] leading-[1.1] text-[#848484]`}
+          >
+            {person.username}
+          </p>
+        </motion.div>
+      )}
     </motion.div>
   );
 }

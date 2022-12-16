@@ -19,30 +19,30 @@ export default function Person({ person }) {
   return (
     <>
       <Head>
-        <title>aq-test-fe • {person.name}</title>
+        <title>{`aq-test-fe • ${person.name}`}</title>
       </Head>
       <main className={roboto.className}>
         <div
-          className="pl-[7.75rem] overflow-hidden"
+          className="overflow-hidden pl-[7.75rem]"
           style={{ height: "calc(1080px - 105px)" }}
         >
-          <div className="pt-[10.5rem] flex gap-[10.5rem]">
+          <div className="flex gap-[10.5rem] pt-[10.5rem]">
             <motion.div
               className="w-2/5 shrink-0"
               initial={{ opacity: 0, x: -300 }}
               animate={{
                 opacity: 1,
                 x: 0,
-                transition: { duration: 1, delay: 0.2 },
+                transition: { duration: 1 },
               }}
             >
               <h1
-                className={`${playfair.className} text-[6.25rem] leading-[1.1] text-black mb-8`}
+                className={`${playfair.className} mb-8 text-[6.25rem] leading-[1.1] text-black`}
               >
                 {person.name}
               </h1>
               <p
-                className={`${playfair.className} text-[1.25rem] leading-[1.1] text-[#848484] mb-14`}
+                className={`${playfair.className} mb-14 text-[1.25rem] leading-[1.1] text-[#848484]`}
               >
                 {person.username}
               </p>
@@ -57,7 +57,7 @@ export default function Person({ person }) {
               </p>
               <Link
                 href="/"
-                className="mt-20 group inline-flex items-center gap-2 text-black uppercase text-[1.25rem]"
+                className="group mt-20 inline-flex items-center gap-2 text-[1.25rem] uppercase text-black"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@ export default function Person({ person }) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 group-hover:-translate-x-2 transition-transform duration-300 ease-in-out"
+                  className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:-translate-x-2"
                 >
                   <path
                     strokeLinecap="round"
@@ -84,11 +84,16 @@ export default function Person({ person }) {
                   height: 1377,
                   transition: { duration: 1 },
                 }}
+                transition={{
+                  layout: {
+                    duration: 1,
+                  },
+                }}
                 layoutId={`image-${person.username}`}
               >
                 <Image
                   src={person.image}
-                  className={`rounded-full aspect-[0.78] object-cover w-full`}
+                  className={`aspect-[0.78] w-full rounded-full object-cover`}
                   alt={person.name}
                   width={536}
                   height={681}
