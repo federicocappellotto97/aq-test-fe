@@ -29,7 +29,7 @@ export default function Person({ person }) {
           <div className="flex gap-[10.5rem] pt-[10.5rem]">
             <motion.div
               className="w-2/5 shrink-0"
-              initial={{ opacity: 0, x: -300 }}
+              initial={{ opacity: 0, x: "-100%" }}
               animate={{
                 opacity: 1,
                 x: 0,
@@ -96,6 +96,8 @@ export default function Person({ person }) {
                   alt={person.name}
                   width={1088}
                   height={1377}
+                  loading="eager"
+                  priority={true}
                 />
               </motion.figure>
             </div>

@@ -54,6 +54,7 @@ export default function Card({ person, index, isCompact }) {
             alt={index}
             width={isCompact ? 536 : 459}
             height={isCompact ? 681 : 583}
+            loading="eager"
             priority={true}
           />
         </motion.figure>
