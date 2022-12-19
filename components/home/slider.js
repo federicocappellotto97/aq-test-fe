@@ -9,7 +9,7 @@ export default function Slider({ people, isCompact, setIsCompact }) {
       className={
         isCompact
           ? ""
-          : "absolute inset-0 top-1/2 flex h-full -translate-y-1/2 flex-col justify-center px-[7.75rem]"
+          : "absolute inset-0 flex flex-col justify-center px-[7.75rem]"
       }
     >
       <motion.div
@@ -24,7 +24,7 @@ export default function Slider({ people, isCompact, setIsCompact }) {
         }}
       >
         {peopleChunk.map((e, i) => (
-          <Card person={e} index={i} key={i} isCompact={isCompact} />
+          <Card person={e} index={i} key={e.username} isCompact={isCompact} />
         ))}
       </motion.div>
       <Switch isCompact={isCompact} setIsCompact={setIsCompact} />

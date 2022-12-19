@@ -13,6 +13,12 @@ export default function Card({ person, index, isCompact }) {
 
   return (
     <motion.div
+      layoutId={`card-${person.username}`}
+      transition={{
+        layout: {
+          duration: 1,
+        },
+      }}
       className={`relative shrink-0`}
       style={{
         zIndex: 10 - index,
@@ -34,7 +40,7 @@ export default function Card({ person, index, isCompact }) {
         href={`/${person.username}`}
         className={isCompact ? "pointer-events-none" : ""}
       >
-        <motion.div
+        <motion.figure
           layoutId={`image-${person.username}`}
           transition={{
             layout: {
@@ -48,8 +54,9 @@ export default function Card({ person, index, isCompact }) {
             alt={index}
             width={isCompact ? 536 : 459}
             height={isCompact ? 681 : 583}
+            priority={true}
           />
-        </motion.div>
+        </motion.figure>
       </Link>
       {!isCompact && (
         <motion.div

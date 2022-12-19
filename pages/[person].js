@@ -77,28 +77,27 @@ export default function Person({ person }) {
               </Link>
             </motion.div>
             <div className="flex-1">
-              <motion.div
-                initial={false}
+              <motion.figure
                 animate={{
                   width: 1088,
                   height: 1377,
-                  transition: { duration: 1 },
                 }}
                 transition={{
                   layout: {
                     duration: 1,
                   },
                 }}
+                initial={false}
                 layoutId={`image-${person.username}`}
               >
                 <Image
                   src={person.image}
-                  className={`aspect-[0.78] w-full rounded-full object-cover`}
+                  className={`aspect-[0.78] rounded-full object-cover`}
                   alt={person.name}
-                  width={536}
-                  height={681}
+                  width={1088}
+                  height={1377}
                 />
-              </motion.div>
+              </motion.figure>
             </div>
           </div>
         </div>

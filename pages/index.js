@@ -1,7 +1,7 @@
 import { Roboto, Playfair_Display } from "@next/font/google";
 import Head from "next/head";
 import Slider from "../components/home/slider";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { people } from "../lib/people";
 
@@ -36,12 +36,10 @@ export default function Home() {
               variants={{
                 compact: {
                   x: 0,
-                  opacity: 1,
                   transition: { duration: 1 },
                 },
                 slider: {
                   x: "-100%",
-                  opacity: 1,
                   transition: { duration: 1 },
                 },
               }}
